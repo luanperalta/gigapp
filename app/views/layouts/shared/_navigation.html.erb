@@ -1,0 +1,28 @@
+<ul class="nav in" id="side-menu">
+       <li>
+          <h4><i class="fa fa-pencil fa-fw"></i> Cadastros</h4> 
+        </li>
+        <li>
+          <%= link_to new_supplier_path do %>
+            <i class="fa fa-list fa-fw"></i> <%= 'Fornecedor' %>
+          <% end %>  
+        </li>
+        <li>
+          <%= link_to new_product_path do %>
+            <i class="fa fa-database fa-fw"></i> <%= 'Produto' %>
+          <% end %>  
+        </li>
+        <li>
+          <%= link_to new_order_path do %>
+            <i class="fa fa-shopping-cart fa-fw"></i> <%= 'Pedido' %>
+          <% end %>  
+        </li>
+         <li>
+          <%= link_to new_carrier_path do %>
+            <i class="fa fa-support fa-fw"></i> <%= 'Transportadora' %>
+          <% end %>  
+        </li>
+    </ul>
+
+
+                                                   

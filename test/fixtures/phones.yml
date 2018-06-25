@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  areacode: MyString
+  number: MyString
+  reference: MyString
+  supplier: one
+
+two:
+  areacode: MyString
+  number: MyString
+  reference: MyString
+  supplier: two

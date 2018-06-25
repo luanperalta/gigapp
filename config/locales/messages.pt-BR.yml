@@ -1,0 +1,12 @@
+"pt-BR":
+  messages:
+    confirm: Tem certeza?
+    listing: Listando
+    name: "Nome:"
+    email: "E-mail:"
+    edit: Editando
+    errors: erros ocorreram...
+    created: Item criado com sucesso!
+    updated: Item atualizado com sucesso!
+    destroyed: item excluído com sucesso!
+    

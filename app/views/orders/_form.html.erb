@@ -1,0 +1,106 @@
+<%= form_with(model: order, local: true) do |form| %>
+ 
+  <div class="row">
+      <div class="col-md-2">
+      <% if order.errors.any? %>
+      <div id="error_explanation">
+      <h3><%= "#{pluralize(order.errors.count, '')} #{t('messages.errors')}:" %> </h3>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+      
+  </div> 
+
+      <div class="col-md-8">
+        <h1>Pedido</h1>
+        <div class="row">
+          <div class="col-md-2">
+            <%= form.label :dateTime %>
+          </div>  
+          <div class="col-md-6">
+            <%= form.datetime_select :dateTime %>
+          </div>  
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <%= form.label :invoice %>
+          </div>
+          <div class="col-md-4">
+            <%= form.text_field :invoice, class: "form-control" %>
+          </div>
+        </div>  
+        <div class="row">
+          <div class="col-md-2">
+            <%= form.label :deliveryValue %>
+          </div>
+          <div class="col-md-4">
+            <%= form.text_field :deliveryValue, onkeyup: "this.value = this.value.replace(/,/g,'.')", class: "form-control" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <%= form.label :discount %>
+          </div>
+          <div class="col-md-4">
+            <%= form.text_field :discount, onkeyup: "this.value = this.value.replace(/,/g,'.')", class: "form-control"  %>
+          </div>
+        </div>
+         <div class="row">
+          <div class="col-md-2">
+            <%= form.label :amount %>
+          </div>
+          <div class="col-md-4">
+            <%= form.text_field :amount, onkeyup: "this.value = this.value.replace(/,/g,'.')", class: "form-control", value: "Gerado na criação do pedido." %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+             <%= form.label :carrier_id %>
+          </div>
+          <div class="col-md-4">
+            <%= form.collection_select(:carrier_id, @carrier_options_for_select, :id, :name, {}, { class: "form-control"} ) %>
+          </div>
+        </div>
+    
+    <div class="row show-grid">
+
+    <h4>Itens do Pedido</h4>
+      
+     <div id="items">
+      <%= form.fields_for :items do |items_fields| %>
+        <%= render partial: "item_fields", locals: { f: items_fields } %>
+      <% end %>
+     </div> 
+    
+      <div class="field">
+         <!-- <%= form.label :items %> -->
+          <%= link_to_add_association('Adicionar Item', form, :items, class: "btn btn-default btn-sm") %>
+      </div>
+  </div>  
+  <br>
+  <div class="actions">
+    <%= form.submit 'Gravar', class: "btn btn-primary"  %>
+    <%= link_to 'Voltar', orders_path, class: "btn btn-success" %>
+
+  </div>
+  </div>
+  <div class="col-md-2">
+    <%= render partial: "layouts/shared/navigation" %>
+</div>
+</div> <!-- row principal -->
+
+<script type="text/javascript">
+  function myFunction(e) {
+    e.value=e.value.replace(/,/g, '.')
+}
+
+</script>
+
+<% end %>
+
+

@@ -1,0 +1,56 @@
+<%= form_with(model: product, local: true) do |form| %>
+ 
+   <div class="row">
+      <div class="col-md-2">
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= "#{pluralize(product.errors.count, '')} #{t('messages.errors')}:" %></h3>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    
+  <% end %>
+  </div>
+<div class="col-md-8">
+  <h1> Produtos </h1>
+  <div class="row">
+  <div class="col-md-2">
+    <%= form.label :name %>
+  </div>
+  <div class="col-md-4">
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+</div>
+  <div class="row">
+  <div class="col-md-2">
+    <%= form.label :description %>
+  </div>
+  <div class="col-md-4">
+    <%= form.text_field :description, class: "form-control" %>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-2">
+    <%= form.label :supplier_id %>
+  </div> 
+  <div class="col-md-4">
+    <%= form.collection_select(:supplier_id, @supplier_options_for_select, :id, :name, {}, { class: "form-control"}) %>
+  </div>
+  </div>
+  <br>
+  
+  <div class="actions">
+          <%= form.submit 'Gravar', class: "btn btn-primary" %>
+          <%= link_to 'Voltar', products_path, class: "btn btn-success" %>
+        </div>
+</div>
+<div class="col-md-2">
+    <%= render partial: "layouts/shared/navigation" %>
+  </div>
+</div>
+
+<% end %>

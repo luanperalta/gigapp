@@ -1,0 +1,89 @@
+
+ <script>
+      $.notify("<%= notice %>", "success");
+  </script>
+<div class="row">
+  <div class="col-md-2">
+  </div>  
+  <div class="col-md-8">
+    <h1>Pedido</h1>
+      <div class="row">
+        <div class="col-md-2">
+          <strong>Date e Hora:</strong>
+        </div>
+        <div class="col-md-6">
+          <%= @order.dateTime.strftime("%d/%m/%y - %H:%M") %>
+        </div> 
+      </div> 
+      <div class="row">
+      <div class="col-md-2">
+          <strong>Nota Fiscal:</strong>
+      </div>  
+        <div class="col-md-6">
+          <%= @order.invoice %>
+        </div>  
+      </div>
+      <div class="row">
+      <div class="col-md-2">
+          <strong>Valor do Frete:</strong>
+      </div>  
+        <div class="col-md-6">
+          <%= @order.deliveryValue %>
+        </div>  
+      </div>
+      <div class="row">
+      <div class="col-md-2">
+         <strong>Desconto:</strong>
+      </div>  
+        <div class="col-md-6">
+          <%= @order.discount %>
+        </div>  
+      </div>
+      <div class="row">
+      <div class="col-md-2">
+         <strong>Total:</strong>
+      </div>  
+        <div class="col-md-6">
+          <%= @order.amount %>
+        </div>  
+      </div>
+      <div class="row">
+      <div class="col-md-2">
+         <strong>Transpostadora:</strong>
+      </div>  
+        <div class="col-md-6">
+          <%= @order.carrier.name %>
+        </div>  
+    </div>
+  <div>
+  <br>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Quantidade</th>
+          <th>Valor</th>
+          <th>Descrição</th>  
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.product.name %></td>
+            <td><%= item.amount %></td>
+            <td><%= item.value %></td>
+            <td><%= item.product.description %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table> 
+  </div>
+</div>
+<%= link_to t('buttons.edit'), edit_order_path(@order), class: "btn btn-success" %>
+<%= link_to t('buttons.back'), orders_path, class: "btn btn-primary" %>
+</div>
+<div class="col-md-2">
+  <%= render partial: "layouts/shared/navigation" %>
+</div> 
+

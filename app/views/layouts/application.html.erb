@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gigapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    params[:controller] %>
+    <%= javascript_include_tag params[:controller] %>
+  </head>
+
+  <body>
+    <div class="container">
+      <%= render partial: "layouts/shared/header" %>
+      <%#= params[:controller].singularize %>
+
+    <%= yield %>
+  
+
+  
+  
+  </div>
+  </body>
+  
+
+</html>

@@ -1,0 +1,117 @@
+<%= form_with(model: supplier, local: true) do |form| %>
+  
+
+<div class="row">
+  <div class="col-md-2">
+    <% if supplier.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= "#{pluralize(supplier.errors.count, '')} #{t('messages.errors')}:" %></h3>
+
+      <ul>
+      <% supplier.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+  </div>
+
+  <div class="col-md-8">
+    <h1>Fornecedor</h1>
+    <div class="row">
+      <div class="col-md-2">
+           <%= form.label :name %>
+      </div>  
+        <div class="col-md-6">
+            <%= form.text_field :name, class: "form-control" %>
+        </div>  
+      </div>
+    <div class="row">
+      <div class="col-md-2">
+           <%= form.label :description %>
+      </div>  
+      <div class="col-md-6">
+            <%= form.text_field :description, class: "form-control" %>
+      </div>  
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+           <%= form.label :city %>
+      </div>  
+      <div class="col-md-6">
+          <%= form.text_field :city, class: "form-control" %>
+      </div>  
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <%= form.label :address %>
+      </div>  
+      <div class="col-md-6">
+        <%= form.text_field :address, class: "form-control" %>
+      </div>  
+    </div>  
+    <div class="row">
+      <div class="col-md-2">
+        <%= form.label :district %>
+      </div>  
+      <div class="col-md-6">
+        <%= form.text_field :district, class: "form-control" %>
+      </div>  
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <%= form.label :number %>
+      </div>  
+      <div class="col-md-6">
+        <%= form.text_field :number, class: "form-control" %>
+      </div>  
+    </div>
+
+ <br>
+  <div class="row">
+    <div class="col-md-6">
+  <div id="emails">
+    <%= form.fields_for :emails do |emails_fields| %>
+      <%= render partial: "email_fields", locals: { f: emails_fields } %>
+    <% end %>
+    
+    <div class="field">
+      <!--<%= form.label :emails %> -->
+      <%= link_to_add_association('Adicionar E-mail', form, :emails, class: "btn btn-default btn-sm") %>
+    </div>
+  
+  </div>
+</div>
+ <div class="col-md-6">
+  <div id="phones">
+  <%= form.fields_for :phones do |phones_fields| %>
+    <%= render partial: "phone_fields", locals: { f: phones_fields } %>
+  <% end %>
+  
+  <div class="field">
+      <!-- <%= form.label :phones %> -->
+      <%= link_to_add_association('Adicionar Telefone', form, :phones, class: "btn btn-default btn-sm") %>
+  </div>
+  
+  </div>
+</div>
+  </div>
+   <br>
+    <div class="actions">
+        <%= form.submit 'Gravar', class: "btn btn-primary" %>
+        <%= link_to 'Voltar', suppliers_path, class: "btn btn-success" %>
+    </div>
+  
+     
+
+
+
+</div>  
+<div class="col-md-2">
+    <%= render partial: "layouts/shared/navigation" %>
+</div>
+</div>
+
+<% end %>

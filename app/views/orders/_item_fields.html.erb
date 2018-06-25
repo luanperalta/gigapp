@@ -1,0 +1,30 @@
+
+<div class="nested-fields">
+    <div class="col-md-3">
+    
+    <div class="field">
+    <%= f.label :product_id %>
+    <%= f.collection_select(:product_id, @products_for_order, :id, :name, { selected: "false" }, { class: "form-control"} )  %>
+    </div>
+    
+    
+    <div class="field">
+      <%= f.label :amount %>
+      <%= f.number_field :amount, class: "form-control"  %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :value %>
+      <%= f.text_field :value, onkeyup: "this.value = this.value.replace(/,/g,'.')", class: "form-control" %>
+    </div>
+  
+  <div class="field">
+    <%= link_to_remove_association('Remover', f, class: "btn btn-danger btn-sm") %>
+  </div>
+ </div>
+</div>
+
+
+
+
+

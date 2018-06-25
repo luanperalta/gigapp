@@ -1,0 +1,44 @@
+ <script>
+      $.notify("<%= notice %>", "success");
+</script>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Transportadoras</h2>
+  </div>
+      <!-- /.panel-heading -->
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th><%= @carriers.model.human_attribute_name("name") %></th>
+                  <th colspan="2"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @carriers.each do |carrier| %>
+                  <tr>
+                    <td><%= carrier.name %></td>
+                    <td><%= link_to t('buttons.edit'), edit_carrier_path(carrier), class: "btn btn-primary" %></td>
+                    <td><%= link_to t('buttons.destroy'), carrier, method: :delete, data: { confirm: t('messages.confirm') }, class: "btn btn-danger" %></td>
+                    </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <div class="pull-right">
+            
+            <%= paginate @carriers %>
+          </div>
+            <div>
+            <%= link_to t('buttons.new'), new_carrier_path, class: "btn btn-success" %>
+          </div>
+          </div>
+                            <!-- /.table-responsive -->
+      </div>
+                        <!-- /.panel-body -->
+</div>
+
+  
+    
+

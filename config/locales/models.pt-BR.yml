@@ -1,0 +1,76 @@
+"pt-BR":
+  activerecord:
+    models:
+      supplier:
+        one: Fornecedor
+        other: Fornecedores
+      order:
+        one: Pedido
+        other: Pedidos
+      carrier:
+        one: Transportadora
+        others: Transportadoras
+      product:
+        one: Produtos
+        other: Produtos
+      phone:
+        one: Telefones
+        other: Telefones
+      email:
+        one: E-mail
+        other: E-mails
+      item:
+        one: Item do Pedido
+        other: Itens do Pedido
+    attributes:
+      supplier:
+        name: Nome
+        description: Descrição
+        city: Cidade
+        address: Endereço
+        district: Bairro
+        number: Número
+        phones: Telefones
+      order:
+        dateTime: Data e Hora
+        invoice: Nota Fiscal
+        deliveryValue: Valor do Frete
+        discount: Desconto
+        amount: Valor Total
+        carrier_id: Transportadora
+        items: Itens do Pedido
+      carrier:
+        name: Nome
+      product:
+        name: Nome
+        description: Descrição
+        supplier_id: Fornecedor
+        suppliers: Fornecedores
+      phone:
+        areacode: DDD
+        number: Número
+        reference: Referencia
+        supplier_id: Fornecedor
+      email:
+        email: E-mail
+        reference: Referencia
+        supplier_id: Fornecedor
+      item:
+        amount: Quantidade
+        value: Valor
+        product_id: Produto
+        order_id: Pedido
+      items:
+        amount: Quantidade
+        value: Valor
+        product_id: Produto
+        order_id: Pedido
+      
+
+
+
+
+
+
+
+      

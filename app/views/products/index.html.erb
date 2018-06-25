@@ -1,0 +1,44 @@
+ <script>
+      $.notify("<%= notice %>", "success");
+  </script>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Produtos</h2>
+  </div>
+      <!-- /.panel-heading -->
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th><%= @products.model.human_attribute_name("name") %></th>
+                  <th><%= @products.model.human_attribute_name("description") %></th>
+                  <th><%= @products.model.human_attribute_name("suppliers") %></th>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
+
+            <tbody>
+            <% @products.each do |product| %>
+              <tr>
+                <td><%= product.name %></td>
+                <td><%= product.description %></td>
+                <td><%= product.supplier.name %></td>
+                <td><%= link_to t('buttons.edit'), edit_product_path(product), class: "btn btn-primary" %></td>
+                <td><%= link_to t('buttons.destroy'), product, method: :delete, data: { confirm: t('messages.confirm') }, class: "btn btn-danger" %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <div class="pull-right">
+            
+            <%= paginate @products %>
+          </div>
+          <%= link_to t('buttons.new'), new_product_path, class: "btn btn-success" %>
+        </div>
+                            <!-- /.table-responsive -->
+      </div>
+                        <!-- /.panel-body -->
+</div>
+                    <!-- /.panel -->
