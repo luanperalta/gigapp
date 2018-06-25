@@ -100,11 +100,16 @@ class OrdersController < ApplicationController
     @order.deliveryValue = @new_order.deliveryValue
     @order.discount = @new_order.discount
     @order.amount = @new_order.amount
+    if @order.deliveryValue == nil
+      @order.deliveryValue = 0
+    end
+    if @order.discount == nil
+      @order.discount = 0
+    end
+      
     @new_order.items.each do |order|
-        
-          total += order.amount.to_f * order.value.to_f
-        
-     end
+      total += order.amount.to_f * order.value.to_f
+    end
      @order.amount = total + @order.deliveryValue - @order.discount
 
    end
