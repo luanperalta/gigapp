@@ -96,19 +96,28 @@ class OrdersController < ApplicationController
 
    def total_calculate_update
     total = 0
+    
     @new_order = Order.new(order_params)
+    if @order.deliveryValue.blank?
+      @order.deliveryValue = 0
+    end
+    if @order.discount.blank?
+      @order.discount = 0
+    end
     @order.deliveryValue = @new_order.deliveryValue
     @order.discount = @new_order.discount
     @order.amount = @new_order.amount
-    if @order.deliveryValue == nil
-      @order.deliveryValue = 0
-    end
-    if @order.discount == nil
-      @order.discount = 0
-    end
+    
       
     @new_order.items.each do |order|
-      total += order.amount.to_f * order.value.to_f
+      if order.amount.blank?
+        order.amount = 0
+      end  
+      if order.value.blank?
+        order.value = 0
+      end  
+
+      total += order.amount * order.value
     end
      @order.amount = total + @order.deliveryValue - @order.discount
 
