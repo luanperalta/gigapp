@@ -55,7 +55,10 @@
             <%= form.label :amount %>
           </div>
           <div class="col-md-4">
-            <%= form.text_field :amount, onkeyup: "this.value = this.value.replace(/,/g,'.')", class: "form-control", value: "Gerado na criação do pedido." %>
+            <%= form.text_field :amount, class: "form-control", readonly: "readonly" %>
+          </div>
+          <div class="col-md-6">
+            <strong>Total será calculado na criação do pedido.</strong>
           </div>
         </div>
         <div class="row">
