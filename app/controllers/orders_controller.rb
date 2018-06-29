@@ -35,9 +35,7 @@ class OrdersController < ApplicationController
      
      @order = Order.new(order_params)
      
-     total_calculate_create
-     
-
+    
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: I18n.t('messages.created') }
@@ -52,12 +50,9 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
-    
-
-    total_calculate_update
-   
+      
     respond_to do |format|
-      if @order.update(update_params)
+      if @order.update(order_params.except([:amount]))
         format.html { redirect_to @order, notice: I18n.t('messages.updated') }
         format.json { render :show, status: :ok, location: @order }
       else
@@ -79,61 +74,7 @@ class OrdersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-   def total_calculate_create
-    total = 0
-    @order.amount = 0
-    if @order.deliveryValue.nil? 
-      @order.deliveryValue = 0
-    end
-    if @order.discount.nil?
-      @order.discount = 0
-    end
-    @order.items.each do |order|
-      if order.amount.nil?
-        order.amount = 0
-      end  
-      if order.value.nil?
-        order.value = 0
-      end 
-      total += order.amount * order.value
-    end
-
-    @order.amount = total + @order.deliveryValue - @order.discount
-
-
-   end
-
-   def total_calculate_update
-    total = 0
-    
-    @new_order = Order.new(order_params)
-    
-    if @order.deliveryValue.nil?
-      @order.deliveryValue = 0
-    end
-    if @order.discount.nil?
-      @order.discount = 0
-    end
-    @order.deliveryValue = @new_order.deliveryValue
-    @order.discount = @new_order.discount
-    @order.amount = @new_order.amount
-    
-      
-    @new_order.items.each do |order|
-      if order.amount.nil?
-        order.amount = 0
-      end  
-      if order.value.nil?
-        order.value = 0
-      end  
-
-      total += order.amount * order.value
-    end
-     @order.amount = total + @order.deliveryValue - @order.discount
-
-   end
-
-
+   
    def set_options_for_select
       @carrier_options_for_select = Carrier.all
    end
@@ -149,10 +90,10 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:dateTime, :invoice, :deliveryValue, :discount, :amount, :carrier_id,
-                                    items_attributes: [:amount, :value, :product_id, :_destroy])
+                                    items_attributes: [:amount, :value, :product_id, :_destroy, :id])
     end
     def update_params
-      params.require(:order).permit(:dateTime, :invoice, :carrier_id,
+      params.require(:order).permit(:dateTime, :invoice, :carrier_id, :deliveryValue, :discount,
                                     items_attributes: [:amount, :value, :id, :product_id, :_destroy])
-    end
 end
+  end
