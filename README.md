@@ -12,7 +12,8 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
-
+	* Para popular o banco de dados
+	rails db:seed 
 * Database initialization
 
 * How to run the test suite

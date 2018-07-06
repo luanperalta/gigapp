@@ -51,7 +51,7 @@ puts "Gerando os fornecedores (Suppliers)..."
 	puts "Gerando Transportadoras (carriers)"
 	10.times do |i|
 	Carrier.create!(
-		name: Faker::Company.name,
+		name: Faker::Company.name
 		
 		) 
 	end
