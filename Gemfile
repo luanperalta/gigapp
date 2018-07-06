@@ -26,6 +26,7 @@ gem "cocoon"
 gem 'bootstrap_sb_admin_base_v2'
 gem 'rails-i18n'
 gem 'jquery_mask_rails'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

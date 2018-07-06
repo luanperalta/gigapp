@@ -4,7 +4,8 @@ class CarriersController < ApplicationController
   # GET /carriers
   # GET /carriers.json
   def index
-    @carriers = Carrier.all.order(:name).page(params[:page]).per(8)
+    @q = Carrier.ransack(params[:q])
+    @carriers = @q.result.page(params[:page])
   end
 
   # GET /carriers/1

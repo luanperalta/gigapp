@@ -11,12 +11,12 @@
           <table class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
-                <th><%= @orders.model.human_attribute_name("dateTime") %></th>
-                <th><%= @orders.model.human_attribute_name("invoice") %></th>
+                <th><%= sort_link(@q, :dateTime, "#{@orders.model.human_attribute_name('dateTime')}") %></th>
+                <th><%= sort_link(@q, :invoice, "#{@orders.model.human_attribute_name('invoice')}") %></th>
                 <th><%= @orders.model.human_attribute_name("deliveryValue") %></th>
                 <th><%= @orders.model.human_attribute_name("discount") %></th>
-                <th><%= @orders.model.human_attribute_name("amount") %></th>
-                <th><%= @orders.model.human_attribute_name("carrier") %></th>
+                <th><%= sort_link(@q, :amount, "#{@orders.model.human_attribute_name('amount')}") %></th>
+                <th><%= sort_link(@q, :carrier_name, "#{@orders.model.human_attribute_name('carrier')}") %></th>
               </tr>
             </thead>
             <tbody>

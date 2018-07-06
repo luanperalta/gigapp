@@ -28,7 +28,7 @@ class Order < ApplicationRecord
   	end
 
   	self.amount += self.deliveryValue - self.discount
-
+    self.amount = self.amount.round(2)
 
   end
 

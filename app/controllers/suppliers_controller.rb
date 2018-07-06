@@ -4,8 +4,8 @@ class SuppliersController < ApplicationController
   # GET /suppliers
   # GET /suppliers.json
   def index
-    @suppliers = Supplier.all.order(:name).page(params[:page]).per(8)
-    
+    @q = Supplier.ransack(params[:q])
+    @suppliers = @q.result.page(params[:page])
   end
 
   # GET /suppliers/1

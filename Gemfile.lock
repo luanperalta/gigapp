@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: 85fc41b329ca2b316bab32c464dd8920fae74998
+  specs:
+    ransack (1.8.8)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -243,6 +253,7 @@ DEPENDENCIES
   rails-assets-notifyjs!
   rails-erd
   rails-i18n
+  ransack!
   sass-rails (~> 5.0)
   selenium-webdriver
   turbolinks (~> 5)

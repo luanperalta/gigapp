@@ -6,8 +6,8 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all.reverse_order.page(params[:page]).per(8)
-    
+    @q = Order.ransack(params[:q])
+    @orders = @q.result.page(params[:page])
   end
 
   # GET /orders/1
@@ -32,10 +32,8 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    @order = Order.new(order_params)
      
-     @order = Order.new(order_params)
-     
-    
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: I18n.t('messages.created') }
@@ -50,7 +48,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
-      
+         
     respond_to do |format|
       if @order.update(order_params.except([:amount]))
         format.html { redirect_to @order, notice: I18n.t('messages.updated') }
@@ -73,8 +71,6 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-   
    def set_options_for_select
       @carrier_options_for_select = Carrier.all
    end
@@ -92,8 +88,5 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:dateTime, :invoice, :deliveryValue, :discount, :amount, :carrier_id,
                                     items_attributes: [:amount, :value, :product_id, :_destroy, :id])
     end
-    def update_params
-      params.require(:order).permit(:dateTime, :invoice, :carrier_id, :deliveryValue, :discount,
-                                    items_attributes: [:amount, :value, :id, :product_id, :_destroy])
+    
 end
-  end
