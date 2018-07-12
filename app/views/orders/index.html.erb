@@ -17,6 +17,7 @@
                 <th><%= @orders.model.human_attribute_name("discount") %></th>
                 <th><%= sort_link(@q, :amount, "#{@orders.model.human_attribute_name('amount')}") %></th>
                 <th><%= sort_link(@q, :carrier_name, "#{@orders.model.human_attribute_name('carrier')}") %></th>
+                <th colspan="3"></th>
               </tr>
             </thead>
             <tbody>
