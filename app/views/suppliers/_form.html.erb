@@ -77,7 +77,7 @@
       <%= render partial: "email_fields", locals: { f: emails_fields } %>
     <% end %>
     
-    <div class="field">
+    <div class="links">
       <!--<%= form.label :emails %> -->
       <%= link_to_add_association('Adicionar E-mail', form, :emails, class: "btn btn-default btn-sm") %>
     </div>
@@ -90,7 +90,7 @@
     <%= render partial: "phone_fields", locals: { f: phones_fields } %>
   <% end %>
   
-  <div class="field">
+  <div class="links">
       <!-- <%= form.label :phones %> -->
       <%= link_to_add_association('Adicionar Telefone', form, :phones, class: "btn btn-default btn-sm") %>
   </div>
