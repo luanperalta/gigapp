@@ -26,7 +26,7 @@
                 <td><%= product.description %></td>
                 <td><%= product.supplier.name %></td>
                 <td><%= link_to t('buttons.edit'), edit_product_path(product), class: "btn btn-primary" %></td>
-                <td><%= link_to t('buttons.destroy'), product, method: :delete, data: { confirm: t('messages.confirm') }, class: "btn btn-danger" %></td>
+                <td><%= link_to t('buttons.destroy'), product, method: :delete, data: { confirm: t('messages.confirm_product') }, class: "btn btn-danger" %></td>
               </tr>
             <% end %>
             </tbody>

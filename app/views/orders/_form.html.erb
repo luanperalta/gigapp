@@ -22,8 +22,8 @@
           <div class="col-md-2">
             <%= form.label :dateTime %>
           </div>  
-          <div class="col-md-6">
-            <%= form.datetime_select :dateTime %>
+          <div class="col-md-10">
+            <span class="datetime"><%= form.datetime_select :dateTime, {}, { class: "form-control" }  %></span>
           </div>  
         </div>
         <div class="row">
@@ -97,12 +97,7 @@
 </div>
 </div> <!-- row principal -->
 
-<script type="text/javascript">
-  function myFunction(e) {
-    e.value=e.value.replace(/,/g, '.')
-}
 
-</script>
 
 <% end %>
 

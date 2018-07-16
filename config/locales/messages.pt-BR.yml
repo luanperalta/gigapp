@@ -9,4 +9,6 @@
     created: Item criado com sucesso!
     updated: Item atualizado com sucesso!
     destroyed: item excluído com sucesso!
-    
+    confirm_carrier: Se você fizer isso todos pedidos com essa transportadora serão excluídos. Tem certeza? 
+    confirm_supplier: Se você fizer isso todos os produtos desse fornecedor serão excluídos. Tem certeza?
+    confirm_product: Esse produto será excluído de todos os pedidos já criados. Tem certeza?
