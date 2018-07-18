@@ -7,9 +7,9 @@
         <div class="col-md-4">
           <h2><%= "#{t('messages.listing')} #{@orders.model.model_name.human(count: @orders.count)}" %></h2>
         </div>
-        <div class="col-md-4" >
-          <%= render partial: 'shared/search' %>
-        </div>
+        <!--   search  -->
+        <%= render partial: 'shared/search' %>
+        <!-- ######### -->
   </div>
   <!-- /.panel-heading -->
   <div class="panel-body">

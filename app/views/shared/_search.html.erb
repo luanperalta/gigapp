@@ -1,5 +1,9 @@
+<div class="col-md-4 pull-right" style="padding-top: 30px">
 <%= search_form_for @q do |f| %>
   <% fields_for_search = search_helper(params[:controller]) %>
+  <div class="col-md-8">
   <%= f.search_field fields_for_search[:search_type], class: "form-control", placeholder: "#{fields_for_search[:text]}" %>
-  <center><%= f.submit 'Pesquisar', class: "btn btn-default" %></center>
+  </div>
+  <%= f.submit 'Pesquisar', class: "btn btn-default" %>
 <% end %>
+</div>
