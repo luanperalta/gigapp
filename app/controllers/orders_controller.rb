@@ -76,7 +76,7 @@ class OrdersController < ApplicationController
    end
    
    def set_products_for_order
-      @products_for_order = Product.all   
+      @products_for_order = Product.all.order(:name)   
    end
 
     def set_order

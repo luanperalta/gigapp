@@ -4,8 +4,15 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h2>Transportadoras</h2>
-  </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Transportadoras</h2>
+      </div>
+      <div class="col-md-4" >
+        <%= render partial: 'shared/search' %>
+      </div>
+
+    </div>
       <!-- /.panel-heading -->
         <div class="panel-body">
           <div class="table-responsive">
@@ -20,8 +27,8 @@
                 <% @carriers.each do |carrier| %>
                   <tr>
                     <td><%= carrier.name %></td>
-                    <td><%= link_to t('buttons.edit'), edit_carrier_path(carrier), class: "btn btn-primary" %></td>
-                    <td><%= link_to t('buttons.destroy'), carrier, method: :delete, data: { confirm: t('messages.confirm_carrier') }, class: "btn btn-danger" %></td>
+                    <td style="width: 130px"><%= link_to t('buttons.edit'), edit_carrier_path(carrier), class: "btn btn-primary" %></td>
+                    <td style="width: 130px"><%= link_to t('buttons.destroy'), carrier, method: :delete, data: { confirm: t('messages.confirm_carrier') }, class: "btn btn-danger" %></td>
                     </tr>
                 <% end %>
               </tbody>

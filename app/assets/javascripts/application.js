@@ -16,8 +16,7 @@
 //= require rails-ujs
 //= require cocoon
 //= require notifyjs
-//= require jquery.mask
-//= require bootstrap_sb_admin_base_v2
+//= require bootstrap_sb_admin_base_v2 
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+

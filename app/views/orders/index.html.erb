@@ -1,52 +1,58 @@
  <script>
       $.notify("<%= notice %>", "success");
   </script>
-   <div class="panel panel-default">
-      <div class="panel-heading">
-        <h2><%= "#{t('messages.listing')} #{@orders.model.model_name.human(count: @orders.count)}" %></h2>
-      </div>
-      <!-- /.panel-heading -->
-      <div class="panel-body">
-        <div class="table-responsive">
-          <table class="table table-striped table-bordered table-hover">
-            <thead>
-              <tr>
-                <th><%= sort_link(@q, :dateTime, "#{@orders.model.human_attribute_name('dateTime')}") %></th>
-                <th><%= sort_link(@q, :invoice, "#{@orders.model.human_attribute_name('invoice')}") %></th>
-                <th><%= @orders.model.human_attribute_name("deliveryValue") %></th>
-                <th><%= @orders.model.human_attribute_name("discount") %></th>
-                <th><%= sort_link(@q, :amount, "#{@orders.model.human_attribute_name('amount')}") %></th>
-                <th><%= sort_link(@q, :carrier_name, "#{@orders.model.human_attribute_name('carrier')}") %></th>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @orders.each do |order| %>
-                <tr>
-                  <td><%= order.dateTime.strftime("%d/%m/%y - %H:%M") %></td>
-                  <td><%= order.invoice %></td>
-                  <td><%= order.deliveryValue %></td>
-                  <td><%= order.discount %></td>
-                  <td><%= order.amount %></td>
-                  <td><%= order.carrier.name %></td>
-                  <td><%= link_to t('buttons.show'), order, class: "btn btn-info" %></td>
-                  <td><%= link_to t('buttons.edit'), edit_order_path(order), class: "btn btn-primary" %></td>
-                  <td><%= link_to t('buttons.destroy'), order, method: :delete, data: { confirm: t('messages.confirm') },  class: "btn btn-danger" %></td>
-                </tr>
-              <% end %>
-            </tbody>
-
-          </table>
-          <div class="pull-right">
-            
-            <%= paginate @orders %>
-          </div>
-          <div><%= link_to t('buttons.new'), new_order_path, class: "btn btn-success" %></div>
-
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-4">
+          <h2><%= "#{t('messages.listing')} #{@orders.model.model_name.human(count: @orders.count)}" %></h2>
         </div>
-                            <!-- /.table-responsive -->
+        <div class="col-md-4" >
+          <%= render partial: 'shared/search' %>
+        </div>
+  </div>
+  <!-- /.panel-heading -->
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th><%= sort_link(@q, :dateTime, "#{@orders.model.human_attribute_name('dateTime')}") %></th>
+            <th><%= sort_link(@q, :invoice, "#{@orders.model.human_attribute_name('invoice')}") %></th>
+            <th><%= @orders.model.human_attribute_name("deliveryValue") %></th>
+            <th><%= @orders.model.human_attribute_name("discount") %></th>
+            <th><%= sort_link(@q, :amount, "#{@orders.model.human_attribute_name('amount')}") %></th>
+            <th><%= sort_link(@q, :carrier_name, "#{@orders.model.human_attribute_name('carrier')}") %></th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.dateTime.strftime("%d/%m/%y - %H:%M") %></td>
+              <td><%= order.invoice %></td>
+              <td><%= order.deliveryValue %></td>
+              <td><%= order.discount %></td>
+              <td><%= order.amount %></td>
+              <td><%= order.carrier.name %></td>
+              <td><%= link_to t('buttons.show'), order, class: "btn btn-info" %></td>
+              <td><%= link_to t('buttons.edit'), edit_order_path(order), class: "btn btn-primary" %></td>
+              <td><%= link_to t('buttons.destroy'), order, method: :delete, data: { confirm: t('messages.confirm') },  class: "btn btn-danger" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+      <div class="pull-right">
+        
+        <%= paginate @orders %>
       </div>
-                         <!-- /.panel-body -->
+      <div><%= link_to t('buttons.new'), new_order_path, class: "btn btn-success" %></div>
+
     </div>
-                    <!-- /.panel -->
+                        <!-- /.table-responsive -->
+  </div>
+                     <!-- /.panel-body -->
+</div>
+                <!-- /.panel -->
                 

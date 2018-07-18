@@ -1,0 +1,5 @@
+<%= search_form_for @q do |f| %>
+  <% fields_for_search = search_helper(params[:controller]) %>
+  <%= f.search_field fields_for_search[:search_type], class: "form-control", placeholder: "#{fields_for_search[:text]}" %>
+  <center><%= f.submit 'Pesquisar', class: "btn btn-default" %></center>
+<% end %>

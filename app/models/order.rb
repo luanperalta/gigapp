@@ -5,12 +5,13 @@ class Order < ApplicationRecord
 
   # validations
   validates :items, presence: true
-  
- 
+  validates :deliveryValue, numericality: { allow_nil: true }
+  validates :amount, numericality: { allow_nil: true }
+   
   accepts_nested_attributes_for :items, allow_destroy: true, reject_if: :all_blank 
   
   # Callbacks
-  before_save :total
+  before_save :total, :invoice_value
   after_find :total
 
 
@@ -30,6 +31,19 @@ class Order < ApplicationRecord
   	self.amount += self.deliveryValue - self.discount
     self.amount = self.amount.round(2)
 
+  end
+
+  def invoice_value
+    if self.invoice.blank?
+      if Order.last.nil?
+        self.invoice = 1
+      else
+        order = Order.last
+        self.invoice = order.id + 1  
+      end 
+     self.invoice 
+    end
+     
   end
 
 end
